@@ -24,8 +24,8 @@ Let `elm-review` be your friendly and trusted helper.
         abstract/simplify functions further than that magic number
       - In general, I didn't ever hate having this enabled and it clearly showed the most prominent
         complexity
-      - I feel like with more _clear scenarios_ (like detecting when a function could be extracted?)
-        could make this really helpful
+      - I feel like having more _clear scenarios_ (like detecting when a function could be extracted?)
+        could make this rule really helpful
 
 ### rules I rejected
 

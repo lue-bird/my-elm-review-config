@@ -82,7 +82,8 @@ config =
     , NoUnused.Patterns.rule
     , NoUnused.Variables.rule
     , NoUnusedPorts.rule
-    , Simplify.rule Simplify.defaults
+    , Simplify.rule
+        (Simplify.defaults |> Simplify.expectNaN)
     , NoSinglePatternCase.rule
         (NoSinglePatternCase.fixInArgument
             |> NoSinglePatternCase.ifAsPatternRequired

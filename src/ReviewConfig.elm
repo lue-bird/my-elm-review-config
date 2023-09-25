@@ -52,6 +52,8 @@ import NoUnused.Patterns
 import NoUnused.Variables
 import NoUnusedPorts
 import OnlyAllSingleUseTypeVarsEndWith_
+import Review.Pattern.As
+import Review.Pattern.Record
 import Review.Rule exposing (Rule)
 import ReviewPipelineStyles
 import ReviewPipelineStyles.Fixes
@@ -195,6 +197,8 @@ config =
     , NoSimpleLetBody.rule
     , NoUnnecessaryTrailingUnderscore.rule
     , NoUnsafeDivision.rule
+    , Review.Pattern.Record.forbid
+    , Review.Pattern.As.forbid
     ]
         |> List.map (Review.Rule.ignoreErrorsForDirectories [ "VerifyExamples/" ])
 

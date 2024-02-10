@@ -76,8 +76,6 @@ config =
     , Docs.UpToDateReadmeLinks.rule
 
     -- ## simplify
-    , NoUnused.CustomTypeConstructors.rule []
-    , NoUnused.CustomTypeConstructorArgs.rule
     , NoUnused.Dependencies.rule
     , NoUnused.Exports.rule
         |> Review.Rule.ignoreErrorsForFiles [ "src/N/Local.elm" ]
@@ -117,6 +115,8 @@ config =
         )
 
     -- ## limit
+    , NoUnused.CustomTypeConstructors.rule []
+    , NoUnused.CustomTypeConstructorArgs.rule
     , [ ReviewPipelineStyles.rightPizzaPipelines
             |> ReviewPipelineStyles.forbid
             |> ReviewPipelineStyles.that

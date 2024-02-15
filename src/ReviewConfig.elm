@@ -52,6 +52,7 @@ import NoUnused.Patterns
 import NoUnused.Variables
 import NoUnusedPorts
 import OnlyAllSingleUseTypeVarsEndWith_
+import Review.OpaqueType
 import Review.Pattern.As
 import Review.Pattern.Record
 import Review.PhantomType
@@ -201,6 +202,7 @@ config =
     , Review.Pattern.Record.forbid
     , Review.Pattern.As.forbid
     , Review.PhantomType.forbid
+    , Review.OpaqueType.forbid
     ]
         |> List.map (Review.Rule.ignoreErrorsForDirectories [ "VerifyExamples/" ])
 

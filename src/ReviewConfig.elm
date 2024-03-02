@@ -52,6 +52,7 @@ import NoUnused.Patterns
 import NoUnused.Variables
 import NoUnusedPorts
 import OnlyAllSingleUseTypeVarsEndWith_
+import Review.Documentation.CodeSnippet
 import Review.OpaqueType
 import Review.Pattern.As
 import Review.Pattern.Record
@@ -75,6 +76,7 @@ config =
         , from = Docs.NoMissing.exposedModules
         }
     , Docs.UpToDateReadmeLinks.rule
+    , Review.Documentation.CodeSnippet.check
 
     -- ## simplify
     , NoUnused.Dependencies.rule

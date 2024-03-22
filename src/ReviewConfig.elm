@@ -58,6 +58,7 @@ import Review.Pattern.As
 import Review.Pattern.Record
 import Review.PhantomType
 import Review.Rule exposing (Rule)
+import Review.VariantValueCount
 import ReviewPipelineStyles
 import ReviewPipelineStyles.Fixes
 import ReviewPipelineStyles.Predicates
@@ -120,6 +121,7 @@ config =
     -- ## limit
     , NoUnused.CustomTypeConstructors.rule []
     , NoUnused.CustomTypeConstructorArgs.rule
+    , Review.VariantValueCount.zeroOrOne
     , [ ReviewPipelineStyles.rightPizzaPipelines
             |> ReviewPipelineStyles.forbid
             |> ReviewPipelineStyles.that

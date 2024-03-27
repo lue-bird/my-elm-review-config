@@ -106,7 +106,6 @@ config =
                -- but such an ordering is not supported by the rule
                NoUnsortedCases.sortOnlyMatchingTypes (\_ _ -> False)
             |> NoUnsortedCases.doNotSortLiterals
-            |> NoUnsortedCases.sortListPatternsByLength
         )
     , NoUnsortedTopLevelDeclarations.rule
         (NoUnsortedTopLevelDeclarations.sortTopLevelDeclarations

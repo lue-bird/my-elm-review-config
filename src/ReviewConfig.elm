@@ -82,7 +82,6 @@ config =
     -- ## simplify
     , NoUnused.Dependencies.rule
     , NoUnused.Exports.rule
-        |> Review.Rule.ignoreErrorsForFiles [ "src/N/Local.elm" ]
     , NoUnused.Parameters.rule
     , NoUnused.Patterns.rule
     , NoUnused.Variables.rule

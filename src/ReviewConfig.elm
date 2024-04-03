@@ -188,6 +188,7 @@ config =
         [ ( forbiddenFunctionOrValues, [] ) ]
     , NoAlways.rule
     , NoDebug.Log.rule
+        |> Review.Rule.ignoreErrorsForDirectories [ "tests/" ]
     , NoDebug.TodoOrToString.rule
         |> Review.Rule.ignoreErrorsForDirectories [ "tests/" ]
     , VariablesBetweenCaseOf.AccessInCases.forbid

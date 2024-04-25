@@ -53,11 +53,12 @@ import NoUnused.Variables
 import NoUnusedPorts
 import OnlyAllSingleUseTypeVarsEndWith_
 import Review.Documentation.CodeSnippet
+import Review.ImportSimple
 import Review.OpaqueType
 import Review.Pattern.As
 import Review.Pattern.Record
 import Review.PhantomType
-import Review.Rule exposing (Rule)
+import Review.Rule
 import Review.VariantValueCount
 import ReviewPipelineStyles
 import ReviewPipelineStyles.Fixes
@@ -67,7 +68,7 @@ import UseCamelCase
 import VariablesBetweenCaseOf.AccessInCases
 
 
-config : List Rule
+config : List Review.Rule.Rule
 config =
     [ -- ## documentation
       Docs.ReviewLinksAndSections.rule
@@ -174,6 +175,7 @@ config =
         |> ReviewPipelineStyles.rule
     , UseCamelCase.rule UseCamelCase.default
     , NoPrimitiveTypeAlias.rule
+    , Review.ImportSimple.rule
     , OnlyAllSingleUseTypeVarsEndWith_.rule
     , NoRecordAliasConstructor.rule
     , NoExposingEverything.rule

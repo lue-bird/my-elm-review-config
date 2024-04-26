@@ -251,35 +251,53 @@ forbiddenWords =
 toCamelCase : String -> String
 toCamelCase =
     \name ->
-        name
-            |> String.foldl
-                (\char soFar ->
-                    if char |> Char.isUpper then
-                        { upperCaseNextRequired = False
-                        , camelized = soFar.camelized ++ (char |> String.fromChar)
-                        }
+        let
+            camelFolded : { camelized : String, upperCaseNextRequired : Maybe { underscores : Int } }
+            camelFolded =
+                name
+                    |> String.foldl
+                        (\char soFar ->
+                            if char |> Char.isUpper then
+                                { upperCaseNextRequired = Nothing
+                                , camelized = soFar.camelized ++ (char |> String.fromChar)
+                                }
 
-                    else if char |> Char.isLower then
-                        { upperCaseNextRequired = False
-                        , camelized =
-                            if soFar.upperCaseNextRequired then
-                                soFar.camelized ++ (char |> Char.toUpper |> String.fromChar)
+                            else if char |> Char.isLower then
+                                { upperCaseNextRequired = Nothing
+                                , camelized =
+                                    case soFar.upperCaseNextRequired of
+                                        Just _ ->
+                                            soFar.camelized ++ (char |> Char.toUpper |> String.fromChar)
+
+                                        Nothing ->
+                                            soFar.camelized ++ (char |> String.fromChar)
+                                }
 
                             else
-                                soFar.camelized ++ (char |> String.fromChar)
+                                case char of
+                                    '_' ->
+                                        { upperCaseNextRequired =
+                                            case soFar.upperCaseNextRequired of
+                                                Nothing ->
+                                                    Just { underscores = 1 }
+
+                                                Just trail ->
+                                                    Just { underscores = trail.underscores + 1 }
+                                        , camelized = soFar.camelized
+                                        }
+
+                                    nonLetterNonUnderscoreChar ->
+                                        { upperCaseNextRequired = Just { underscores = 0 }
+                                        , camelized = soFar.camelized ++ (nonLetterNonUnderscoreChar |> String.fromChar)
+                                        }
+                        )
+                        { camelized = ""
+                        , upperCaseNextRequired = Nothing
                         }
+        in
+        case camelFolded.upperCaseNextRequired of
+            Nothing ->
+                camelFolded.camelized
 
-                    else
-                        case char of
-                            '_' ->
-                                { upperCaseNextRequired = True
-                                , camelized = soFar.camelized
-                                }
-
-                            nonLetterNonUnderscoreChar ->
-                                { upperCaseNextRequired = True
-                                , camelized = soFar.camelized ++ (nonLetterNonUnderscoreChar |> String.fromChar)
-                                }
-                )
-                { camelized = "", upperCaseNextRequired = False }
-            |> .camelized
+            Just trail ->
+                camelFolded.camelized ++ String.repeat trail.underscores "_"

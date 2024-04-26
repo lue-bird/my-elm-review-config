@@ -173,7 +173,11 @@ config =
                 ]
       ]
         |> ReviewPipelineStyles.rule
-    , UseCamelCase.rule UseCamelCase.default
+    , UseCamelCase.rule
+        (UseCamelCase.default
+            |> UseCamelCase.withCamel toCamelCase
+            |> UseCamelCase.withPascal toCamelCase
+        )
     , NoPrimitiveTypeAlias.rule
     , Review.ImportSimple.rule
     , OnlyAllSingleUseTypeVarsEndWith_.rule
@@ -242,3 +246,40 @@ forbiddenWords =
     , [ "- []" ]
     ]
         |> List.concat
+
+
+toCamelCase : String -> String
+toCamelCase =
+    \name ->
+        name
+            |> String.foldl
+                (\char soFar ->
+                    if char |> Char.isUpper then
+                        { upperCaseNextRequired = False
+                        , camelized = soFar.camelized ++ (char |> String.fromChar)
+                        }
+
+                    else if char |> Char.isLower then
+                        { upperCaseNextRequired = False
+                        , camelized =
+                            if soFar.upperCaseNextRequired then
+                                soFar.camelized ++ (char |> Char.toUpper |> String.fromChar)
+
+                            else
+                                soFar.camelized ++ (char |> String.fromChar)
+                        }
+
+                    else
+                        case char of
+                            '_' ->
+                                { upperCaseNextRequired = True
+                                , camelized = soFar.camelized
+                                }
+
+                            nonLetterNonUnderscoreChar ->
+                                { upperCaseNextRequired = True
+                                , camelized = soFar.camelized ++ (nonLetterNonUnderscoreChar |> String.fromChar)
+                                }
+                )
+                { camelized = "", upperCaseNextRequired = False }
+            |> .camelized

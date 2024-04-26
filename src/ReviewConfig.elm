@@ -277,17 +277,20 @@ toCamelCase =
                                 case char of
                                     '_' ->
                                         { upperCaseNextRequired =
-                                            case soFar.upperCaseNextRequired of
-                                                Nothing ->
-                                                    Just { underscores = 1 }
+                                            Just
+                                                { underscores =
+                                                    case soFar.upperCaseNextRequired of
+                                                        Nothing ->
+                                                            1
 
-                                                Just trail ->
-                                                    Just { underscores = trail.underscores + 1 }
+                                                        Just trail ->
+                                                            trail.underscores + 1
+                                                }
                                         , camelized = soFar.camelized
                                         }
 
                                     nonLetterNonUnderscoreChar ->
-                                        { upperCaseNextRequired = Just { underscores = 0 }
+                                        { upperCaseNextRequired = Nothing
                                         , camelized = soFar.camelized ++ (nonLetterNonUnderscoreChar |> String.fromChar)
                                         }
                         )

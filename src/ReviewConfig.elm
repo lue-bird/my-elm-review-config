@@ -24,7 +24,6 @@ import NoDeprecated
 import NoDuplicatePorts
 import NoExposingEverything
 import NoForbiddenWords
-import NoFunctionOutsideOfModules
 import NoImportAs
 import NoImportingEverything
 import NoMissingTypeAnnotation
@@ -189,8 +188,6 @@ config =
     , NoMissingTypeAnnotation.rule
     , NoMissingTypeAnnotationInLetIn.rule
     , NoMissingTypeExpose.rule
-    , NoFunctionOutsideOfModules.rule
-        [ ( forbiddenFunctionOrValues, [] ) ]
     , NoAlways.rule
     , NoDebug.Log.rule
         |> Review.Rule.ignoreErrorsForDirectories [ "tests/" ]
@@ -215,28 +212,6 @@ config =
     , Review.OpaqueType.forbid
     ]
         |> List.map (Review.Rule.ignoreErrorsForDirectories [ "VerifyExamples/" ])
-
-
-forbiddenFunctionOrValues : List String
-forbiddenFunctionOrValues =
-    -- these should one day be fully fledged
-    [ -- use tuple destructuring instead
-      -- for improved descriptiveness
-      "Tuple.first"
-    , "Tuple.second"
-    , -- use `mapFirst |> mapSecond` instead
-      "Tuple.mapBoth"
-    , -- use `String.indexes` instead
-      "String.indices"
-    , -- use a `case` instead
-      "String.isEmpty"
-    , "List.isEmpty"
-    , "List.tail"
-
-    -- use a `Set`, `Dict` or `List.sortWith`
-    , "List.sort"
-    , "List.sortBy"
-    ]
 
 
 forbiddenWords : List String

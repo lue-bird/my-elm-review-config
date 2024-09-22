@@ -24,23 +24,8 @@ Let `elm-review` be your friendly and trusted helper.
         abstract/simplify functions further than that magic number
       - In general, I didn't ever hate having this enabled and it clearly showed the most prominent
         complexity
-      - I feel like having more _clear scenarios_ (like detecting when a function could be extracted?)
+      - I feel like having more _concrete scenarios_ (like detecting when a function could be extracted?)
         could make this rule really helpful
-
-### rules I rejected
-
-```elm
-ReviewPipelineStyles.parentheticalApplicationPipelines
-    |> ReviewPipelineStyles.forbid
-    |> ReviewPipelineStyles.that
-        (ReviewPipelineStyles.Predicates.haveAnyNonInputStepThatIs
-            ReviewPipelineStyles.Predicates.aSemanticallyInfixFunction
-        )
-    |> ReviewPipelineStyles.andTryToFixThemBy ReviewPipelineStyles.Fixes.convertingToRightPizza
-    |> ReviewPipelineStyles.andCallThem "parenthetical application of a semantically-infix function"
-```
-
-because `aSemanticallyInfixFunction` covers `atLeast`/`atMost`/... which can be used here: [`ArraySized.Morph.atLeast n3 AToZ.Morph.char`](https://dark.elm.dmy.fr/packages/lue-bird/elm-morph/latest/ArraySized-Morph#atLeast)
 
 ## other peops' configs
   - [`SiriusStarr/elm-review-rules`](https://github.com/SiriusStarr/elm-review-rules)

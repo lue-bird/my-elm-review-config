@@ -33,4 +33,6 @@ Let `elm-review` be your friendly and trusted helper.
       - has a few rules covered multiple times (like no-redundant-cons which is now part of simplify)
       - has deprecated rules like [`NoUnused.Modules`](https://dark.elm.dmy.fr/packages/jfmengels/elm-review-unused/latest/NoUnused-Modules)
       - has more strict ordering rules
+  - [`sparksp/elm-review-config`](https://github.com/sparksp/elm-review-config)
+      - similar to mine but with less rules
   - 👀 add a link to yours via PR

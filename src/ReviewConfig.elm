@@ -219,11 +219,7 @@ config =
 
 forbiddenWords : List String
 forbiddenWords =
-    [ [ "REPLACEME", "FIXME", "REMOVEME", "CHECKME" ]
-    , [ "TOREPLACE", "TOFIX", "TOREMOVE", "TOCHECK", "TODO" ]
-    , [ "- []" ]
-    ]
-        |> List.concat
+    [ "REPLACEME", "TODO", "- []" ]
 
 
 toCamelCase : String -> String

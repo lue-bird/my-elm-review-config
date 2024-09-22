@@ -109,11 +109,6 @@ config =
     , NoUnsortedTopLevelDeclarations.rule
         (NoUnsortedTopLevelDeclarations.sortTopLevelDeclarations
             |> NoUnsortedTopLevelDeclarations.glueHelpersAfter
-            |> NoUnsortedTopLevelDeclarations.glueDependenciesBeforeFirstDependent
-        )
-    , NoUnsortedLetDeclarations.rule
-        (NoUnsortedLetDeclarations.sortLetDeclarations
-            |> NoUnsortedLetDeclarations.glueDependenciesBeforeFirstDependent
         )
 
     -- ## limit

@@ -70,6 +70,8 @@ import VariablesBetweenCaseOf.AccessInCases
 config : List Review.Rule.Rule
 config =
     [ -- ## documentation
+      -- enable on a per-project basis
+      --, Review.Documentation.CodeSnippet.check
       Docs.ReviewLinksAndSections.rule
     , Docs.ReviewAtDocs.rule
     , Docs.NoMissing.rule
@@ -77,7 +79,6 @@ config =
         , from = Docs.NoMissing.exposedModules
         }
     , Docs.UpToDateReadmeLinks.rule
-    , Review.Documentation.CodeSnippet.check
 
     -- ## simplify
     , NoUnused.Dependencies.rule

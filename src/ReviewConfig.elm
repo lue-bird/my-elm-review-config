@@ -40,7 +40,6 @@ import NoUnoptimizedRecursion
 import NoUnsafeDivision
 import NoUnsafePorts
 import NoUnsortedCases
-import NoUnsortedLetDeclarations
 import NoUnsortedTopLevelDeclarations
 import NoUnused.CustomTypeConstructorArgs
 import NoUnused.CustomTypeConstructors

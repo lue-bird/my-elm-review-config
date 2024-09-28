@@ -24,8 +24,6 @@ import NoDeprecated
 import NoDuplicatePorts
 import NoExposingEverything
 import NoForbiddenWords
-import NoImportAs
-import NoImportingEverything
 import NoMissingTypeAnnotation
 import NoMissingTypeAnnotationInLetIn
 import NoMissingTypeExpose
@@ -186,8 +184,6 @@ config =
     , NoRecordAliasConstructor.rule
     , NoExposingEverything.rule
     , NoForbiddenWords.rule forbiddenWords
-    , NoImportingEverything.rule []
-    , NoImportAs.rule
     , NoMissingTypeAnnotation.rule
     , NoMissingTypeAnnotationInLetIn.rule
     , NoMissingTypeExpose.rule

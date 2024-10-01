@@ -86,14 +86,6 @@ config =
     , NoUnusedPorts.rule
     , Simplify.rule
         (Simplify.defaults |> Simplify.expectNaN)
-    , NoSinglePatternCase.rule
-        (NoSinglePatternCase.fixInArgument
-            |> NoSinglePatternCase.ifAsPatternRequired
-                (NoSinglePatternCase.fixInLetInstead
-                    |> NoSinglePatternCase.andIfNoLetExists
-                        NoSinglePatternCase.createNewLet
-                )
-        )
     , MultipleAppendToConcat.rule MultipleAppendToConcat.PipeRightList
 
     -- ## sort

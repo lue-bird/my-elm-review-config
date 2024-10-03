@@ -18,6 +18,7 @@ import Docs.UpToDateReadmeLinks
 import EqualsCaseable
 import MultipleAppendToConcat
 import NoAlways
+import NoCatchAllForSpecificRemainingPatterns
 import NoDebug.Log
 import NoDebug.TodoOrToString
 import NoDeprecated
@@ -194,6 +195,7 @@ config =
     , Review.Pattern.As.forbid
     , Review.PhantomType.forbid
     , Review.OpaqueType.forbid
+    , NoCatchAllForSpecificRemainingPatterns.rule
     ]
         |> List.map (Review.Rule.ignoreErrorsForDirectories [ "VerifyExamples/" ])
 

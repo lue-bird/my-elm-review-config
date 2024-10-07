@@ -169,7 +169,7 @@ config =
     , OnlyAllSingleUseTypeVarsEndWith_.rule
     , NoRecordAliasConstructor.rule
     , NoExposingEverything.rule
-    , NoForbiddenWords.rule forbiddenWords
+    , NoForbiddenWords.rule [ "REPLACEME", "TODO", "- []" ]
     , NoMissingTypeAnnotation.rule
     , NoMissingTypeAnnotationInLetIn.rule
     , NoMissingTypeExpose.rule
@@ -198,11 +198,6 @@ config =
     , NoCatchAllForSpecificRemainingPatterns.rule
     ]
         |> List.map (Review.Rule.ignoreErrorsForDirectories [ "VerifyExamples/" ])
-
-
-forbiddenWords : List String
-forbiddenWords =
-    [ "REPLACEME", "TODO", "- []" ]
 
 
 toCamelCase : String -> String

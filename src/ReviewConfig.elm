@@ -88,7 +88,9 @@ config =
     , NoUnusedPorts.rule
     , Simplify.rule
         (Simplify.defaults |> Simplify.expectNaN)
-    , MultipleAppendToConcat.rule MultipleAppendToConcat.PipeRightList
+
+    -- enable when performance is not as important
+    -- , MultipleAppendToConcat.rule MultipleAppendToConcat.PipeRightList
     , Review.Action.rule
 
     -- ## limit

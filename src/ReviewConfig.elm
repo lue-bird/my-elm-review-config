@@ -91,12 +91,6 @@ config =
     , MultipleAppendToConcat.rule MultipleAppendToConcat.PipeRightList
     , Review.Action.rule
 
-    -- ## sort
-    , NoUnsortedTopLevelDeclarations.rule
-        (NoUnsortedTopLevelDeclarations.sortTopLevelDeclarations
-            |> NoUnsortedTopLevelDeclarations.glueHelpersAfter
-        )
-
     -- ## limit
     , NoUnused.CustomTypeConstructors.rule []
     , NoUnused.CustomTypeConstructorArgs.rule

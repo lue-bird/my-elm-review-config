@@ -185,7 +185,9 @@ config =
     , Review.Pattern.As.forbid
     , Review.PhantomType.forbid
     , Review.OpaqueType.forbid
-    , NoCatchAllForSpecificRemainingPatterns.rule
+    , -- If you do not like this rule, set this config to True
+      NoCatchAllForSpecificRemainingPatterns.rule
+        { onlyReportCatchAllIfEquivalentToSinglePattern = False }
     ]
         |> List.map (Review.Rule.ignoreErrorsForDirectories [ "VerifyExamples/" ])
 

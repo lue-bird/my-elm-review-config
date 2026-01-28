@@ -28,6 +28,8 @@ Let `elm-review` be your friendly and trusted helper.
         could make this rule really helpful
 
 ## other peops' configs
+  - [`miniBill/elm-review-config`](https://github.com/miniBill/elm-review-config)
+      - solid selection
   - [`SiriusStarr/elm-review-rules`](https://github.com/SiriusStarr/elm-review-rules)
       - explains every rule super nicely
       - has a few rules covered multiple times (like no-redundant-cons which is now part of simplify)
